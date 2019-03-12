@@ -1,0 +1,10 @@
+{
+  "name": "nodejs-postgresql",
+  "version": "1.0.0",
+  "description": "How to use PostgreSQL with nodejs & it's connection pooling.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "4.14.0",
+    "pg": "6.0.1"
+  }
+}

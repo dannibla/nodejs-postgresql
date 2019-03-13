@@ -1,7 +1,3 @@
-
-/*
- * GET users listing.
- */
 var pg = require("pg");
 var connectionString = "postgres://postgres:root@localhost:5432/database";
 
@@ -84,41 +80,35 @@ exports.edit = function (req, res) {
     var id = req.params.id;
 
     pg.connect(connectionString, function (err, client, done) {
+
         if (err) {
             console.log("not able to get connection " + err);
             res.status(400).send(err);
         }
+
         client.query('SELECT * FROM customer WHERE id = $1', [id], function (err, result) {
-            done(); // closing the connection;
+            done();
             if (err) {
                 console.log(err);
                 res.status(400).send(err);
             }
-            //res.status(200).send(result.rows);
             res.render('edit_customer', { page_title: "Edit Customers - Node.js", data: result.rows });
-
-
         });
 
-        //console.log(query.sql);
     });
 
 };
 
-/*Save the customer*/
 exports.save = function (req, res) {
 
-  //  var input = JSON.parse(JSON.stringify(req.body));
     var data = JSON.parse(JSON.stringify(req.body));
 
-  //  var data = [input.name, input.address, input.email, input.phone];
-
     pg.connect(connectionString, function (err, client, done) {
+
         if (err) {
             console.log("not able to get connection " + err);
             res.status(400).send(err);
         }
-
 
         var query = insertByID(data, 'customer');
 
@@ -131,22 +121,12 @@ exports.save = function (req, res) {
             console.log("not able to get connection " + err);
             res.status(400).send(err);
         }
+
         client.query(query, colValues, function (err, result) {
             if (err)
                 console.log("Error Updating : %s ", err);
             res.redirect('/customers');
         });
-
-
-        //client.query("INSERT INTO customer(name, address, email, phone) VALUES($1, $2, $3, $4) RETURNING *", data, function (err, rows) {
-        //    done(); // closing the connection;
-        //    if (err) {
-        //        console.log(err);
-        //        res.status(400).send(err);
-        //    }
-        //    res.redirect('/customers');
-
-        //});
 
     });
 
@@ -170,6 +150,7 @@ exports.update = function (req, res) {
             console.log("not able to get connection " + err);
             res.status(400).send(err);
         }
+
         client.query(query, colValues, function (err, result) {
             if (err)
                 console.log("Error Updating : %s ", err);
@@ -180,12 +161,10 @@ exports.update = function (req, res) {
 
 };
 
-
 exports.delete = function (req, res) {
 
     var id = req.params.id;
 
-    //  req.getConnection(function (err, connection) {
     pg.connect(connectionString, function (err, client, done) {
         if (err) {
             console.log("not able to get connection " + err);
@@ -200,7 +179,7 @@ exports.delete = function (req, res) {
 
         });
     });
-    //   });
+
 };
 
 

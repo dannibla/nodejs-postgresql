@@ -4,7 +4,11 @@
   "description": "How to use PostgreSQL with nodejs & it's connection pooling.",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "1.18.3",
+    "ejs": "2.6.1",
     "express": "4.14.0",
+    "express-validator": "^2.1.2",
+    "path": "0.12.7",
     "pg": "6.0.1"
   }
 }

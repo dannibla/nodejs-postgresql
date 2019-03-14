@@ -1,6 +1,6 @@
 const express = require('express');
 const { Client } = require('pg');
-const connectionString = 'postgres://postgres:root@localhost:5432/database';
+const connectionString = 'postgres://postgres:postgres@localhost:5432/database';
 
 const client = new Client({
     connectionString: connectionString
@@ -13,7 +13,7 @@ var app = express();
 app.set('port', process.env.PORT || 4000);
 
 app.get('/', function (req, res, next) {
-    client.query('SELECT * FROM student where id = $1', [1], function (err, result) {      
+    client.query('SELECT * FROM Employee where id = $1', [1], function (err, result) {      
         if (err) {
             console.log(err);
             res.status(400).send(err);

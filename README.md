@@ -54,6 +54,10 @@ INSERT INTO Employee values(1,'John',1001);
 - Type `node app.js` in terminal/console in the source folder where `app.js` is located
 - server started on port 4000. (http://localhost:4000/) in default browser
 
+## Brief Documented
+
+Documented on [medium](https://link.medium.com/Itzt6BDbAV)
+
 ## Help on Executing Queries
 
 Documented is available node-postgres(Doc) [pg](https://node-postgres.com/features/queries)
